@@ -117,13 +117,25 @@ public class CMain_May25 {
 			} // end of while(m.find()) :小問ごとの処理
 			//<s:....>を<table>にする。
 			if(tableFlag) {
-				String tableStr = "<table><caption><b>選択肢</b></caption>";
+				String tableStr = "<table>\n<caption><b>選択肢</b></caption>\n";
 				//選択肢の数
 				int num = selectItemArray.length;
-				int remainder = num%5;
-				
-				//1行は5列ときめうち
-			}
+				int index = 0;
+				tableStr +=("<tr>");
+				while(index < num) {
+					tableStr +="<td>"+(index+1)+". "+selectItemArray[index]+"</td>";
+					if(((index+1)%5) == 0 ) {
+						tableStr +=("</tr>\n");
+						tableStr += ("<tr>");
+					}
+					if(index == num-1) {
+						tableStr+=("</tr>\n");
+					}
+					index++;
+				}
+				tableStr += ("</table>\n");
+				System.out.println(tableStr);
+			}// end of if(tableFlag : <table>作成処理
 		} // end of for( target : 問題ごとの処理
 
 	} //end of main()
